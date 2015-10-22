@@ -19,10 +19,16 @@
   "homepage": "https://github.com/comsysto/flux-lab",
   "devDependencies": {
     "browserify": "^11.2.0",
+    "del": "^2.0.2",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.9.2",
+    "merge2": "^0.3.6",
+    "reactify": "^1.1.1",
     "tsd": "^0.6.5",
-    "typescript": "^1.6.2"
+    "typescript": "^1.6.2",
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
     "react": "^0.13.3",
