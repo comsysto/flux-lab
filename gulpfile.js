@@ -11,7 +11,10 @@ var tsProject = ts.createProject({
     declaration: true,
     module: 'commonjs',
     jsx: 'react',
-    noExternalResolve: false
+    noExternalResolve: false,
+    target: 'ES5',
+    emitDecoratorMetadata: true,
+    experimentalDecorators: true
 });
 
 gulp.task('clean', function (callback) {
