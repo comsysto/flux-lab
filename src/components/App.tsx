@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import {ControlSnapshotAction} from "../actions/ControlSnapshotAction";
 
 @connect(state => state)
 export class App extends React.Component<any, any> {
@@ -19,10 +20,15 @@ export class App extends React.Component<any, any> {
         return (
             <div>
                 <p>The application is: { started.toString() }</p>
-                <p><button onClick={ (e) => dispatch({ type: 'start' }) }>Start app</button></p>
-                <p><button onClick={ (e) => dispatch({ type: 'stop' }) }>Stop app</button></p>
+                <p><button onClick={ (e) => dispatch(new ControlSnapshotAction(true)) }>Start app</button></p>
+                <p><button onClick={ (e) => dispatch(new ControlSnapshotAction(false)) }>Stop app</button></p>
+
             </div>
         );
+    }
+
+    componentDidMount() {
+
     }
 
 }

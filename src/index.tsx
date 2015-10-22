@@ -1,29 +1,19 @@
 ///<reference path="../typings/tsd.d.ts"/>
 import * as React from 'react';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { App } from './components/App';
+import { addReducer, combineReducers } from './reducers/reducers';
+// Redux utility functions
+import { compose, createStore, applyMiddleware } from 'redux';
+// Redux DevTools store enhancers
+import { devTools, persistState } from 'redux-devtools';
+// React components for Redux DevTools
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import {ControlSnapshotAction} from "./actions/ControlSnapshotAction";
 
-let store = createStore((state, action) => {
-    if (!state) {
-        state = {
-            started: false
-        }
-    }
+addReducer('started', ControlSnapshotAction, (state, action) => action.started, false);
 
-    switch (action.type) {
-        case 'start':
-            return Object.assign({}, state, {
-                started: true
-            });
-        case 'stop':
-            return Object.assign({}, state, {
-                started: false
-            });
-    }
-
-    return state;
-});
+let store = createStore(combineReducers);
 
 let rootElement = document.getElementById('root');
 React.render(

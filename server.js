@@ -6,7 +6,7 @@ var app = express(),
 
 router.get('/', function(req, res) {
     res.json({
-        foo: 'bar'
+        version: '1.5.6.10'
     })
 });
 
