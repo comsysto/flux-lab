@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
-import { startSnapshotGeneration, endSnapshotGeneration  } from './../../actions/actions';
+import { startSnapshotGeneration, endSnapshotGeneration, getVersionList  } from './../../actions/actions';
 import Dispatch = Redux.Dispatch;
 
 import { SnapshotState } from './SnapshotState/SnapshotState';
@@ -9,11 +9,20 @@ import { GenerateSnapshots } from './GenerateSnapshots/GenerateSnapshots';
 import { ManageVersions } from './ManageVersions/ManageVersions';
 import {IVersion} from "../../models/IVersion";
 
+let getActiveVersion = (versions) => {
+    let activeVersion = versions.find((version:IVersion) => version.active);
+    if (activeVersion) {
+        return activeVersion.name;
+    } else {
+        return '';
+    }
+};
+
 let mapState = (state) => {
     let props:UIState = {
         started: state.started,
         versions: state.versions,
-        versionName: state.versions.find((version:IVersion) => version.active).name,
+        versionName: getActiveVersion(state.versions),
         dispatch: state.dispatch
     };
 
@@ -57,6 +66,11 @@ export class SnapshotControls extends React.Component<SnapshotControlsProps, any
                 />
             </div>
         )
+    }
+
+    componentDidMount() {
+        const { dispatch } = this.props as UIState;
+        dispatch(getVersionList());
     }
 }
 

@@ -6,3 +6,5 @@
 /// <reference path="redux-logger/redux-logger.d.ts" />
 /// <reference path="redux-devtools/redux-devtools.d.ts" />
 /// <reference path="redux-actions/redux-actions.d.ts" />
+/// <reference path="redux-thunk/redux-thunk.d.ts" />
+/// <reference path="jquery/jquery.d.ts" />

@@ -32,10 +32,12 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "jquery": "^2.1.4",
     "react": "^0.13.3",
     "react-redux": "^3.1.0",
     "redux": "^3.0.3",
     "redux-actions": "^0.8.0",
-    "redux-logger": "^2.0.4"
+    "redux-logger": "^2.0.4",
+    "redux-thunk": "^0.1.0"
   }
 }

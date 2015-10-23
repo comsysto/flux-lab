@@ -9,7 +9,7 @@
       "commit": "44cbde48eecd1918ed54b3be49a9752688b6c65a"
     },
     "redux/redux.d.ts": {
-      "commit": "44cbde48eecd1918ed54b3be49a9752688b6c65a"
+      "commit": "3191f6e0088eee07c4d8fd24e4d27a40a60d9eb9"
     },
     "react-redux/react-redux.d.ts": {
       "commit": "44cbde48eecd1918ed54b3be49a9752688b6c65a"
@@ -25,6 +25,12 @@
     },
     "redux-actions/redux-actions.d.ts": {
       "commit": "44cbde48eecd1918ed54b3be49a9752688b6c65a"
+    },
+    "redux-thunk/redux-thunk.d.ts": {
+      "commit": "3191f6e0088eee07c4d8fd24e4d27a40a60d9eb9"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "3191f6e0088eee07c4d8fd24e4d27a40a60d9eb9"
     }
   }
 }

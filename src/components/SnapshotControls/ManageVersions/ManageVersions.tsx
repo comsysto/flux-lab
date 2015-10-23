@@ -7,7 +7,20 @@ export class ManageVersions extends React.Component<ManageVersionsProps, any> {
     }
 
     render() {
-        return <p>Versions halt</p>
+        return (
+            <div>
+                <h2>Manage versions</h2>
+                <select>
+                    { this.props.versions.map(this.versionOption) }
+                </select>
+            </div>
+        );
+    }
+
+    private versionOption(version) {
+        return (
+            <option>{version.name}</option>
+        )
     }
 }
 

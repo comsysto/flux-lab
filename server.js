@@ -1,23 +1,17 @@
 var express = require('express');
 
 var app = express(),
-    router = express.Router(),
     port = 8666;
 
-router.get('/', function(req, res) {
-    res.json({
-        version: '1.5.6.10'
-    })
-});
 
-router.get('/versions', function(req, res) {
+app.get('/versions', function(req, res) {
     res.json([
         {
             name: '1.5',
             active: false
         },
         {
-            name: '3.0',
+            name: '9.0',
             active: true
         },
         {
@@ -27,7 +21,7 @@ router.get('/versions', function(req, res) {
     ])
 });
 
-app.use('/', router);
+app.use('/', express.static('./'));
 
 app.listen(port);
 console.log('Listening at', port);

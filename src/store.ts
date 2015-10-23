@@ -1,22 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import * as thunk from 'redux-thunk';
 import { snapshotApp } from './reducers/snapshotApp';
+import Middleware = Redux.Middleware;
 
-let initialState = {
-    started: false,
-    versions: [
-        {
-            name: '1.5',
-            active: false
-        },
-        {
-            name: '3.0',
-            active: true
-        },
-        {
-            name: '5.0',
-            active: false
-        }
-    ]
-};
+const createStoreWithMiddleware = applyMiddleware(thunk as any)(createStore);
 
-export const store = createStore(snapshotApp, initialState);
+export const store = createStoreWithMiddleware(snapshotApp);
