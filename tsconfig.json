@@ -1,0 +1,16 @@
+{
+    "files": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "typings/**/*.ts"
+    ],
+    "compilerOptions": {
+        "declaration": true,
+        "module": "commonjs",
+        "jsx": "react",
+        "noExternalResolve": false,
+        "target": "ES5",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    }
+}

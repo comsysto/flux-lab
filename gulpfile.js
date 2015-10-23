@@ -7,15 +7,7 @@ var del = require('del');
 var merge = require('merge2');
 var sourcemaps = require('gulp-sourcemaps');
 
-var tsProject = ts.createProject({
-    declaration: true,
-    module: 'commonjs',
-    jsx: 'react',
-    noExternalResolve: false,
-    target: 'ES5',
-    emitDecoratorMetadata: true,
-    experimentalDecorators: true
-});
+var tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('clean', function (callback) {
     return del(['build/**']);
