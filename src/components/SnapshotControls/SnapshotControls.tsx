@@ -8,6 +8,8 @@ import { SnapshotState } from './SnapshotState/SnapshotState';
 import { GenerateSnapshots } from './GenerateSnapshots/GenerateSnapshots';
 import { ManageVersions } from './ManageVersions/ManageVersions';
 import {IVersion} from "../../models/IVersion";
+import {StartSnapshotGeneration} from "../../actions/actions";
+import {StopSnapshotGeneration} from "../../actions/actions";
 
 let getActiveVersion = (versions) => {
     let activeVersion = versions.find((version:IVersion) => version.active);
@@ -58,8 +60,8 @@ export class SnapshotControls extends React.Component<SnapshotControlsProps, any
                 />
                 <GenerateSnapshots
                     started={ started }
-                    startSnapshotGeneration={ () => dispatch(startSnapshotGeneration()) }
-                    endSnapshotGeneration={ () => dispatch(endSnapshotGeneration()) }
+                    startSnapshotGeneration={ () => dispatch(new StartSnapshotGeneration()) }
+                    endSnapshotGeneration={ () => dispatch(new StopSnapshotGeneration()) }
                 />
                 <ManageVersions
                     versions={ versions }

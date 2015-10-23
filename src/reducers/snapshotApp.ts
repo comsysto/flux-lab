@@ -5,17 +5,36 @@ import {
     UPDATE_VERSION_LIST
 } from './../actions/actions'
 import { IVersion } from "../models/IVersion";
+import { typedReducer, chainReducers, initialState } from "../middlewares/TypedMiddleware";
+import {StartSnapshotGeneration, StopSnapshotGeneration} from "../actions/actions";
 
-function started(state:boolean = false, action?:any) {
-    switch (action.type) {
-        case START_SNAPSHOT_GENERATION:
-            return true;
-        case END_SNAPSHOT_GENERATION:
-            return false;
-        default:
-            return state;
-    }
-}
+var started = initialState(
+    false, chainReducers(
+        typedReducer(
+            StartSnapshotGeneration,
+            () => {
+                return true;
+            }
+        ),
+        typedReducer(
+            StopSnapshotGeneration,
+            () => {
+                return false;
+            }
+        )
+    )
+);
+
+//function started(state:boolean = false, action?:any) {
+//    switch (action.type) {
+//        case START_SNAPSHOT_GENERATION:
+//            return true;
+//        case END_SNAPSHOT_GENERATION:
+//            return false;
+//        default:
+//            return state;
+//    }
+//}
 
 function versions(state:IVersion[] = [], action?:any) {
     switch (action.type) {
