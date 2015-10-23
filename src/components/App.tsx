@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { context } from '../flux-impl/context';
 import {ControlSnapshotAction} from "../actions/ControlSnapshotAction";
+import {ControlButton} from './ControlButton'
+import {Store, propertyReducer, initialValue, reducer} from '../flux-impl/store'
 
-@connect(state => state)
+var store = new Store({started: false});
+store.reducer(ControlSnapshotAction, propertyReducer('started')((state, action: ControlSnapshotAction) => action.started));
+
+@context(store)
 export class App extends React.Component<any, any> {
 
     static propTypes:React.ValidationMap<any> = {
@@ -11,7 +16,6 @@ export class App extends React.Component<any, any> {
 
     constructor(props) {
         super(props);
-        console.log('blaaa');
     }
 
     render() {
@@ -19,19 +23,17 @@ export class App extends React.Component<any, any> {
 
         return (
             <div>
-                <p>The application is: { started.toString() }</p>
-                <p><button onClick={ (e) => dispatch(new ControlSnapshotAction(true)) }>Start app</button></p>
-                <p><button onClick={ (e) => dispatch(new ControlSnapshotAction(false)) }>Stop app</button></p>
-
+                {'' + started}
+                <button  onClick={() => dispatch(new ControlSnapshotAction(true))}>start</button>
+                <button  onClick={() => dispatch(new ControlSnapshotAction(false))}>stop</button>
             </div>
         );
     }
 
-    componentDidMount() {
-
-    }
 
 }
+
+
 
 
 //export interface AppProps {
